@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Треки пользователя</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Треки пользователя: {{ username }}</h1>
+        
+        <!-- Tracks Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Файл</th>
+                    <th>Расстояние (км)</th>
+                    <th>Длительность</th>
+                    <th>Дата записи</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for track in tracks %}
+                <tr>
+                    <td>{{ track.filename }}</td>
+                    <td>{{ track.distance_km | round(2) }}</td>
+                    <td>{{ track.duration }}</td>
+                    <td>{{ track.upload_time }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <!-- Back to Statistics -->
+        <div class="menu">
+            <a href="/">Главная</a>
+            <a href="/statistics">Общий результат</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

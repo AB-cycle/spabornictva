@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <h2>Welcome, {{ username }}</h2>
+            <p>Total Distance: {{ total_distance }} km</p>
+            <h3>Your Tracks:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Track Name</th>
+                        <th>Distance (km)</th>
+                        <th>Duration</th>
+                        <th>Upload Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for track in tracks %}
+                    <tr>
+                        <td>{{ track.filename }}</td>
+                        <td>{{ track.distance_km }}</td>
+                        <td>{{ track.duration }}</td>
+                        <td>{{ track.upload_time }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="/">Go back to Upload Page</a>
+        </div>
+    </main>
+</body>
+</html>
